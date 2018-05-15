@@ -1,0 +1,92 @@
+<html>
+    <head>
+         <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+
+input[type=submit] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+.container {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+
+    </head>
+    <body>
+                <h2><center>Add Lecture</center></h2><br><br>
+                <div id="app">
+                    <div class="container" id="addLecture">
+                        <label for="name">Lecture Name</label>
+                        <input type="text" id="name" name="name" placeholder="Lecture name.." v-model='name' required> 
+                       
+                        <label for="batch">Batch</label>
+                        <select id="batch" placeholder="Select Batch..."  v-model="batchId" required>
+                          <option v-bind:value="b.id" v-for='b in batch'>{{b.name}}</option>
+                        </select>
+
+                        <label for="subject">Subject</label>
+                        <select id="subject" placeholder="Select Subject..."  v-model="subjectId" required>
+                          <option v-bind:value="s.id" v-for='s in subject'>{{s.name}}</option>
+                        </select>
+
+                        <label for="teacher">Teacher</label>
+                        <select id="teacher" placeholder="Select Teacher..."  v-model="taecherId" required>
+                          <option v-bind:value="t.id" v-for='t in teacher'>{{t.name}}</option>
+                        </select>
+
+                        <input type="submit" value="Submit" v-on:click="addLecture" >
+                    </div> 
+                    <div class="container" align="center">
+                           <h2>Course Details</h2>
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Id</th>
+                                  <th>Lecture Name</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr v-for="l in lecture">
+                                        <th scope="row">{{l.id}}</th>
+                                        <td>
+                                            {{l.name}}
+                                        </td>
+                                 </tr>
+                 
+                              </tbody>
+                            </table>
+                          </div>
+    </body>
+    <script src="../js/addLecture.js"></script>
+</html>
